@@ -1,24 +1,27 @@
 # George-s-Stock
-Este script automatiza la generación de un reporte de productos con bajo stock en base a un archivo de Excel de ventas. Utiliza una interfaz gráfica para mostrar advertencias y permitir acciones rápidas, como abrir archivos JSON de configuración o exportar el resultado a un archivo `.txt`.
 
-## Funcionalidades principales
+Este es un proyecto personal para automatizar el control de stock en una tienda de productos de decoración y perfumería (Lovely George Luxury Candles), adecuandome a sus necesidades y estructura de datos. Utiliza Python, archivos Excel y configuración flexible mediante JSON.
 
-- Carga y analiza un archivo Excel mensual con los datos del stock.
-- Verifica los niveles de stock de productos según condiciones predefinidas.
-- Informa los productos cuyo stock está por debajo del mínimo establecido.
-- Permite abrir archivos de configuración directamente desde la interfaz.
-- Genera un archivo `.txt` con los productos bajos y lo guarda en el escritorio.
-- Utiliza interfaz gráfica (`Tkinter`) para facilitar la interacción con el usuario.
+## 🔍 Objetivo
 
-## Requisitos
+El objetivo fue crear una herramienta que:
 
-- Python 3.9 o superior.
-- Librerías:
-  - `pandas`
-  - `openpyxl`
-  - `tkinter` (viene con Python)
-  - `Pillow`
-  - `json`
-  - `os`
-  - `datetime`
-  - `logging`
+- Analice archivos Excel diarios de stock.
+- Compare condiciones definidas en JSON (stock mínimo, alias, combos).
+- Tenga una interfaz gráfica simple para uso por el equipo.
+
+## 💻 Tecnologías utilizadas
+
+- Python
+- Pandas
+- Tkinter
+- JSON
+
+## 🧠 Funcionalidades
+
+- Comparación automatizada de productos con bajo stock.
+- Ventana para seleccionar archivos Excel fácilmente.
+- Alertas visuales.
+- Generación de reportes finales.
+- Configuración personalizada por JSON.
+
