@@ -122,10 +122,15 @@ def generar_stock_bajo(ventana):
 
         if producto != producto_original:
             mensaje = mensaje.replace(producto_original, producto)
+            
+    with open('C:\\Users\\Usuario\\OneDrive\\Escritorio\\Nueva Carpeta\\Stock bajo accesorios.txt', 'r', encoding="utf-8") as file:
+        accesorios = file.read()
+        
+    with open('C:\\Users\\Usuario\\OneDrive\\Escritorio\\Nueva Carpeta\\Stock generado.txt', 'w', encoding="utf-8") as file:
+        file.write(mensaje + '\n' + accesorios)
+        
 
-    with open('C:\\Users\\Usuario\\OneDrive\\Escritorio\\Stock generado.txt', 'w', encoding="utf-8") as file:
-        file.write(mensaje)
-    
+
     logging.info(f"Se ha generado un reporte de stock")
 
     def salir_programa():
@@ -133,7 +138,7 @@ def generar_stock_bajo(ventana):
         ventana.destroy()
     
     def abrir_stock_bajo_y_salir():
-        archivo = 'C:\\Users\\Usuario\\OneDrive\\Escritorio\\Stock generado.txt'
+        archivo = 'C:\\Users\\Usuario\\OneDrive\\Escritorio\\Nueva Carpeta\\Stock generado.txt'
         if os.path.exists(archivo):
             os.startfile(archivo)  # Abrir archivo de stock bajo generado
             ventana_info.quit()  # Cerrar la ventana de éxito
@@ -144,7 +149,7 @@ def generar_stock_bajo(ventana):
 
     ventana_info = tk.Toplevel()
     ventana_info.geometry("470x120")
-    ventana_info.iconbitmap('C:\\Users\\Usuario\\OneDrive\\Escritorio\\Nueva carpeta\\en-stock.ico')
+    ventana_info.iconbitmap('C:\\Users\\Usuario\\OneDrive\\Escritorio\\Nueva carpeta\\en-stock3.ico')
 
     pantalla_ancho = ventana_info.winfo_screenwidth()
     pantalla_alto = ventana_info.winfo_screenheight()
@@ -159,13 +164,13 @@ def generar_stock_bajo(ventana):
     label_info = tk.Label(ventana_info, text="Se ha generado el archivo en el escritorio.", font=("Arial", 12, "bold"), width=50)
     label_info.pack(pady=20)
 
-    btn_aceptar = tk.Button(ventana_info, text="Continuar en el programa", command=ventana_info.destroy, font=("Arial", 12, "bold"), bg="#2E8B57", fg="white", relief="flat", bd=5, cursor="hand2")
+    btn_aceptar = tk.Button(ventana_info, text="Continuar en el programa", command=ventana_info.destroy, font=("Arial", 12), bg="#7A651D", fg="white", relief="flat", bd=5, cursor="hand2")
     btn_aceptar.pack(side="left", padx=20, pady=10)
 
-    btn_salir = tk.Button(ventana_info, text="Salir del programa", command=lambda: [salir_programa(), ventana_info.quit()], font=("Arial", 12, "bold"), bg="#DC143C", fg="white", relief="flat", bd=5, cursor="hand2")
+    btn_salir = tk.Button(ventana_info, text="Salir del programa", command=lambda: [salir_programa(), ventana_info.quit()], font=("Arial", 12), bg="#DA274B", fg="white", relief="flat", bd=5, cursor="hand2")
     btn_salir.pack(side="right", padx=20, pady=10)
    
-    btn_abrir_stock_bajo = tk.Button(ventana_info, text="Abrir .txt y salir", command=abrir_stock_bajo_y_salir, font=("Arial", 12, "bold"), bg="#145cad", fg="white", relief="flat", bd=5, cursor="hand2")
+    btn_abrir_stock_bajo = tk.Button(ventana_info, text="Abrir .txt y salir", command=abrir_stock_bajo_y_salir, font=("Arial", 12, "bold"), bg="#7A651D", fg="white", relief="flat", bd=5, cursor="hand2")
     btn_abrir_stock_bajo.pack(side="bottom", pady=10)
     
     ventana_info.mainloop()
@@ -177,7 +182,7 @@ def cerrar_ventana(ventana):
 def mostrar_interfaz():
     ventana = tk.Tk()
     ventana.title("REPORTE DE STOCK BAJO")
-    ventana.iconbitmap('C:\\Users\\Usuario\\OneDrive\\Escritorio\\Nueva carpeta\\en-stock.ico')
+    ventana.iconbitmap('C:\\Users\\Usuario\\OneDrive\\Escritorio\\Nueva carpeta\\en-stock3.ico')
 
     screen_width = ventana.winfo_screenwidth()
     screen_height = ventana.winfo_screenheight()
@@ -202,7 +207,7 @@ def mostrar_interfaz():
     icono_advertencia = icono_advertencia.resize((16, 16))
     icono_advertencia_tk = ImageTk.PhotoImage(icono_advertencia)
 
-    titulo_productos = tk.Label(ventana, text="PRODUCTOS SIN CONDICIÓN DE STOCK:", font=("Arial", 12, "bold"), anchor="w", fg="#DC143C")
+    titulo_productos = tk.Label(ventana, text="PRODUCTOS SIN CONDICIÓN DE STOCK:", font=("Arial", 12, "bold"), anchor="w", fg="#7A651D")
     titulo_productos.pack(pady=10, padx=20)
 
     frame_scroll = tk.Frame(ventana, height=300)
@@ -235,10 +240,10 @@ def mostrar_interfaz():
     frame_botones = tk.Frame(ventana)
     frame_botones.place(x=42, y=window_height - 100)
     
-    btn_generar = tk.Button(frame_botones, text="Generar stock bajo", command=lambda: generar_stock_bajo(ventana), font=("Arial", 11, "bold"), bg="#2E8B57", fg="white", relief="flat", bd=3, width=18, height=1, cursor="hand2")
-    btn_condiciones = tk.Button(frame_botones, text="Condiciones de stock", command=abrir_condiciones_stock, font=("Arial", 11, "bold"), bg="#145cad", fg="white", relief="flat", bd=3, width=18, height=1, cursor="hand2")
-    btn_plus = tk.Button(frame_botones, text='Productos con "+"', command=abrir_productos_con_plus, font=("Arial", 11, "bold"), bg="#145cad", fg="white", relief="flat", bd=3, width=18, height=1, cursor="hand2")
-    btn_salir = tk.Button(frame_botones, text="Salir", command=lambda: cerrar_ventana(ventana), font=("Arial", 11, "bold"), bg="#DC143C", fg="white", relief="flat", bd=3, width=18, height=1, cursor="hand2")
+    btn_generar = tk.Button(frame_botones, text="Generar stock bajo", command=lambda: generar_stock_bajo(ventana), font=("Arial", 11, "bold"), bg="#7A651D", fg="white", relief="flat", bd=3, width=18, height=1, cursor="hand2")
+    btn_condiciones = tk.Button(frame_botones, text="Condiciones de stock", command=abrir_condiciones_stock, font=("Arial", 11), bg="#7A651D", fg="white", relief="flat", bd=3, width=18, height=1, cursor="hand2")
+    btn_plus = tk.Button(frame_botones, text='Productos con "+"', command=abrir_productos_con_plus, font=("Arial", 11), bg="#7A651D", fg="white", relief="flat", bd=3, width=18, height=1, cursor="hand2")
+    btn_salir = tk.Button(frame_botones, text="Salir", command=lambda: cerrar_ventana(ventana), font=("Arial", 11), bg="#DA274B", fg="white", relief="flat", bd=3, width=18, height=1, cursor="hand2")
 
     btn_generar.grid(row=0, column=0, padx=5, pady=5)     
     btn_condiciones.grid(row=0, column=1, padx=5, pady=5)  
