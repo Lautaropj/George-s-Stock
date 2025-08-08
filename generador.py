@@ -44,7 +44,9 @@ df['FECHA'] = pd.to_datetime(df['FECHA'], errors='coerce')
 
 df_filtrado = df[df['FECHA'].dt.date == fecha_ahora.date()] 
 
-df_filtrado = df_filtrado.applymap(lambda x: x.strip() if isinstance(x, str) else x)# Cargar los archivos JSON necesarios
+df_filtrado = df_filtrado.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+
+# Cargar los archivos JSON necesarios
 try:
     with open('C:\\Users\\Usuario\\OneDrive\\Escritorio\\Nueva carpeta\\stock_conditions.json', 'r', encoding="utf-8") as f:
         stock_conditions = json.load(f)
@@ -74,12 +76,10 @@ for index, row in df_filtrado.iterrows():
     producto = row['PRODUCTO']  # Accede correctamente a la columna de producto
     if pd.isna(producto) or pd.isna(row['STOCK']):
         continue
-
     stock_actual = row['STOCK']
     if not isinstance(stock_actual, (int, float)):
         print(f"Producto '{producto}' tiene un stock no válido: {stock_actual}")
         continue
-
     if producto in stock_conditions:
         limite, ideal = stock_conditions[producto]
         if stock_actual <= limite:
@@ -253,3 +253,4 @@ def mostrar_interfaz():
     ventana.mainloop()
 
 mostrar_interfaz()
+
